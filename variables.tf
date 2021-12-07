@@ -12,7 +12,7 @@ variable "encryption" {
   type = object({
     default_kms_key_name = string
   })
-  default = null
+  default = {}
 }
 
 variable "versioning" {

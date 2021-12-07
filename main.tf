@@ -35,7 +35,7 @@ resource "google_storage_bucket" "static-site" {
   }
 
   dynamic "retention_policy" {
-    for_each = var.retention_policy == null ? [] : [var.retention_policy]
+    for_each = var.retention_policy == {} ? [] : [var.retention_policy]
     content {
       is_locked        = var.retention_policy.is_locked
       retention_period = var.retention_policy.retention_period
