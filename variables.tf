@@ -15,3 +15,8 @@ variable "encryption" {
   default = null
 }
 
+variable "versioning" {
+  description = "While set to true, versioning is fully enabled for this bucket."
+  type        = bool
+  default     = true
+}
