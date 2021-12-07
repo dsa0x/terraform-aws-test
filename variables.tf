@@ -1,18 +1,16 @@
 variable "retention_policy" {
   description = "Configuration of the bucket's data retention policy for how long objects in the bucket should be retained."
   type = object({
-    is_locked        = bool
-    retention_period = number
+    is_locked        = optional(bool)
+    retention_period = optional(number)
   })
-  default = null
+  default = {}
 }
 
 variable "encryption" {
   description = "A Cloud KMS key that will be used to encrypt objects inserted into this bucket"
-  type = object({
-    default_kms_key_name = string
-  })
-  default = {}
+  type = any
+  default = null
 }
 
 variable "versioning" {
@@ -20,3 +18,12 @@ variable "versioning" {
   type        = bool
   default     = true
 }
+
+output "enc" {
+  value = var.encryption
+}
+
+output "ret" {
+    value = var.retention_policy
+}
+
